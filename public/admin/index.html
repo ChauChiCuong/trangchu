@@ -1,0 +1,11 @@
+<h1>Trang Quản Trị</h1>
+<table id="userTable"></table>
+<script>
+fetch('/api/users')
+  .then(res => res.json())
+  .then(users => {
+    const table = document.getElementById('userTable');
+    table.innerHTML = '<tr><th>Tên</th><th>Vai trò</th></tr>' +
+      users.map(u => `<tr><td>${u.username}</td><td>${u.role}</td></tr>`).join('');
+  });
+</script>
